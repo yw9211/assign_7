@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Joe’s Hotdog Stand</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+    <style>
+    * {
+      background-color: #AC8E60;
+      font-family: 'Abel', sans-serif;
+      text-align: center;
+    }
+    .food {
+      text-align: right;
+      margin-right: 22%;
+      padding: 20px 10px;
+      background-color: #E9DAC4;
+    }
+    .menu {
+      margin: 0 auto;
+      border: 5px solid #fff;
+      width: 30%;
+      background-color: #E9DAC4;
+    }
+    h1 {
+      padding-top: 10%;
+      color: #fff;
+    }
+    h3 {
+      display: inline;
+      padding-right: 10px;
+      background-color: #E9DAC4;
+    }
+    select {
+      background-color: #fff;
+    }
+    #btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 10em;
+      background-color: #fff;
+    }
+    #btn:hover {
+      background-color: #E9DAC4;
+    }
+    </style>
+    <script type="text/javascript">
+      function tally() {
+        var hotdogs = parseInt(document.getElementById("hotdogs").value);
+        var fries = parseInt(document.getElementById("fries").value);
+        var sodas = parseInt(document.getElementById("sodas").value);
+        
+        if (hotdogs == 0 && fries == 0 && sodas == 0)
+          alert("ERROR: no items have been ordered");
+        else {
+          var subtotal = (hotdogs * 3.25) + (fries * 2.00) + (sodas * 1.50);
+          var discount;
+          
+          if (subtotal >= 20) {
+            discount = subtotal * 0.1;
+          }
+          else {
+            discount = 0;
+          }
+          tax = (subtotal - discount) * 0.0625;
+          total = (subtotal - discount) + tax;
+          
+          alert(hotdogs + " Hotdogs: $" + (hotdogs * 3.25).toFixed(2) + "\n" + fries + " Fries: $" + (fries * 2.00).toFixed(2) + "\n" + sodas + " Sodas: $" + (sodas * 1.50).toFixed(2) + "\n--------------------\nSubtotal: $" + subtotal + "\nDiscount: -$" + discount.toFixed(2) + "\nTax: $" + tax.toFixed(2) + "\n--------------------\nTotal: $" + total.toFixed(2));
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Joe’s Hotdog Stand</h1>
+  <div class="menu">
+    <div class="food">
+      <h3>Hotdogs</h3>
+      <h3>$3.25</h3>
+      <label for="hotdogs"><h3>Quantity:</h3></label>
+      <select name="hotdogs" id="hotdogs">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+    <div class="food">
+      <h3>Fries</h3>
+      <h3>$2.00</h3>
+      <label for="fries"><h3>Quantity:</h3></label>
+      <select name="fries" id="fries">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+    <div class="food">
+      <h3>Sodas</h3>
+      <h3>$1.50</h3>
+      <label for="sodas"><h3>Quantity:</h3></label>
+      <select name="sodas" id="sodas">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+  </div>
+    <input type="button" value="Order" onclick="tally()" id="btn">
+  </body>
+</html>
